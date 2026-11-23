@@ -7,7 +7,8 @@ icon: material/car-shift-pattern
 La palanca se acciona con un **mecanismo articulado** que respeta el recorrido de la transmisión original del tractor. Ya está construida e integrada al sistema.
 
 - **Controlador:** Raspberry Pi Pico 3, que también maneja el **pistón del acelerador** (ver [Pistones](pistones.md))
-- **Driver:** dedicado, el más pequeño del tablero, alimentado a 24 V desde el [tablero](tablero.md)
+- **Motor:** NEMA 17 a pasos
+- **Driver:** TB6600 (hasta 4 A), el más pequeño del tablero, alimentado a 24 V desde el [tablero](tablero.md)
 - **Retroalimentación:** línea DATA del mecanismo a su Pico
 
 ---
@@ -19,14 +20,32 @@ flowchart LR
     ROS[Jetson Nano<br/>ROS 2] --> PICO[Pico 3]
     PICO -->|señal de control| DRVA[Driver acelerador]
     DRVA --> ACEL[Pistón del acelerador]
-    PICO -->|señal de control| DRV[Driver]
-    DRV -->|24 V| ACT[Actuador]
+    PICO -->|Step / Dir / Enable| DRV[TB6600]
+    DRV -->|24 V| ACT[NEMA 17]
     ACT --> MEC[Mecanismo articulado]
     MEC --> PAL[Palanca de velocidades]
     MEC -. DATA .-> PICO
 ```
 
 El mecanismo es no invasivo: se monta por fuera con abrazaderas y acoples rápidos, igual que el resto del kit.
+
+### Posiciones
+
+La palanca se mueve entre tres posiciones:
+
+| Posición | Uso |
+|---|---|
+| **Reversa** | Retroceder |
+| **Neutral** | Tractor detenido o en espera; posición segura |
+| **Primera** | Avanzar durante la operación autónoma |
+
+### Fuerza requerida
+
+Mover la palanca requiere **7 kgf**:
+
+| Paso | Cálculo | Resultado |
+|---|---|---|
+| Fuerza | 7 kgf × 9.81 | **68.67 N** |
 
 ### Velocidades medidas
 
@@ -43,16 +62,14 @@ Las velocidades del tractor se cronometraron en un tramo de 50 m:
 
 | Componente | Modelo | Función |
 |---|---|---|
-| Motor | *Por completar* | Mueve el mecanismo articulado de la palanca |
-| Driver | *Por completar* (el más pequeño del tablero) | Amplificador entre el micro y el motor, a 24 V |
+| Motor | NEMA 17 (cara de 42 mm), a pasos | Mueve el mecanismo articulado de la palanca |
+| Driver | TB6600 (hasta 4 A) | Amplificador entre el micro y el motor. Señales: Step, Direction, Enable |
 | Encoder | AS5600 (efecto Hall, 12 bits) | Mide la orientación de un imán pegado al eje: 0–4095 por vuelta, 0.088° por cuenta |
 | Lector del encoder | ATtiny412 | Lee el AS5600 por I2C y lo envía a la Pico |
 | Controlador | Raspberry Pi Pico 3 (micro-ROS) | Controla la palanca y el pistón del acelerador; se comunica con ROS 2 en la Jetson Nano |
 | Mecanismo | Articulado, impreso en 3D | Respeta el recorrido de la transmisión original |
 
 
-!!! note "Por completar"
-    El reporte todavía no trae los cálculos ni los resultados de la palanca: posiciones (velocidades) que acciona, fuerza requerida, recorrido, actuador y modelo del driver.
 
 ---
 

@@ -35,7 +35,7 @@ flowchart LR
 La separación en canales **aísla fallas**: si un canal se detiene, los otros dos conservan su control.
 
 !!! tip "Regla fácil"
-    **Cada mecanismo tiene su propio driver, y cada Pico solo maneja los suyos.** Si falla el volante, revisa solo la Pico 1 y su driver; si fallan freno o embrague, la Pico 2; si fallan palanca o acelerador, la Pico 3. El driver más pequeño es siempre el de la palanca; el volante y los pistones usan el mismo modelo (DM860H).
+    **Cada mecanismo tiene su propio driver, y cada Pico solo maneja los suyos.** Si falla el volante, revisa solo la Pico 1 y su driver; si fallan freno o embrague, la Pico 2; si fallan palanca o acelerador, la Pico 3. El driver más pequeño es siempre el de la palanca (TB6600); el volante y los pistones usan el mismo modelo (DM860H).
 
 ---
 
@@ -77,7 +77,7 @@ flowchart LR
 | Control | Raspberry Pi Pico 2 — freno y embrague | Controla los drivers de los pistones de freno y embrague | Lógica 3.3 V |
 | Control | Raspberry Pi Pico 3 — palanca y acelerador | Controla el driver de la palanca y el del pistón del acelerador | Lógica 3.3 V |
 | Potencia de salida | Driver del volante (DM860H) | Entrega corriente al motor del volante | 24 V |
-| Potencia de salida | Driver de la palanca (el más pequeño) | Entrega corriente al mecanismo de la palanca | 24 V |
+| Potencia de salida | Driver de la palanca (TB6600, el más pequeño) | Entrega corriente al NEMA 17 de la palanca | 24 V |
 | Potencia de salida | Drivers de pistones (3 × DM860H, uno por pistón) | Entregan corriente a cada pistón | 24 V |
 | Posicionamiento | 2 antenas GNSS UM980 (encima de la caja) | Reciben la señal de los satélites | Cable a las entradas de antena del UM982 |
 | Posicionamiento | Módulo GNSS-RTK UM982 (rover) | Calcula la posición del tractor con las dos antenas y las correcciones RTK | USB (Jetson) → USB-C (UM982) |
