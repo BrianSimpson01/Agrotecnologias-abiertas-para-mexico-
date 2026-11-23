@@ -57,7 +57,7 @@ Un sistema **modular**: cada subsistema se desarrolla, prueba y cambia sin tocar
 
     ---
 
-    Mecanismo articulado que respeta el recorrido de la transmisión original.
+    NEMA 17 con driver TB6600 y mecanismo articulado: reversa, neutral y primera.
 
     [:octicons-arrow-right-24: Palanca](palanca.md)
 
