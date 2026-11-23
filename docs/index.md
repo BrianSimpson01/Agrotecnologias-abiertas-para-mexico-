@@ -78,11 +78,11 @@ Lo que queda es la prueba, no construcción. Ver [Uso](uso.md#pruebas-de-campo).
 
 ## Equipo
 
-- Brian Carl Simpson y Reyes
-- Héctor Ojeda Serafio
-- Héctor Cornejo Morales
 - Ángel Iván Domínguez Cruz
+- Apolinar Velázquez Fernández
+- Brian Carl Simpson y Reyes
 - Danna Paola García Sánchez
 - Emmanuel del Villar Soto
+- Héctor Cornejo Morales
+- Héctor Ojeda Serafio
 - Pablo Eduardo Manzano López
-- Apolinar Velázquez Fernández
