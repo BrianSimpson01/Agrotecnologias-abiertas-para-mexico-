@@ -1,8 +1,8 @@
-# Palanca de velocidades
+# Palanca de velocidades y acelerador
 
 La palanca se acciona con un **mecanismo articulado** que respeta el recorrido de la transmisión original del tractor. Ya está construida e integrada al sistema.
 
-- **Controlador:** Raspberry Pi Pico #2
+- **Controlador:** Raspberry Pi Pico 3, que también maneja el **pistón del acelerador** (ver [Pistones](pistones.md))
 - **Driver:** dedicado, el más pequeño del tablero, alimentado a 24 V desde el [tablero](tablero.md)
 - **Retroalimentación:** línea DATA del mecanismo a su Pico
 
@@ -12,7 +12,9 @@ La palanca se acciona con un **mecanismo articulado** que respeta el recorrido d
 
 ```mermaid
 flowchart LR
-    ROS[ROS 2] --> PICO[Pico palanca]
+    ROS[Jetson Nano<br/>ROS 2] --> PICO[Pico 3]
+    PICO -->|señal de control| DRVA[Driver acelerador]
+    DRVA --> ACEL[Pistón del acelerador]
     PICO -->|señal de control| DRV[Driver]
     DRV -->|24 V| ACT[Actuador]
     ACT --> MEC[Mecanismo articulado]
@@ -37,7 +39,7 @@ Las velocidades del tractor se cronometraron en un tramo de 50 m:
 
 | Componente | Modelo | Notas |
 |---|---|---|
-| Microcontrolador | Raspberry Pi Pico | |
+| Microcontrolador | Raspberry Pi Pico 3 | Compartida con el pistón del acelerador |
 | Driver | *Por completar* (el más pequeño del tablero) | 24 V |
 | Actuador | *Por completar* | |
 | Mecanismo | Articulado, impreso en 3D | |
@@ -76,7 +78,7 @@ Piezas de SolidWorks (`.SLDPRT`) del mecanismo de la palanca.
 ## Código
 
 ```cpp
-// Firmware de la Pico de la palanca
+// Firmware de la Pico 3 (palanca y acelerador)
 ```
 
 ## Fotos

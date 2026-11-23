@@ -1,8 +1,10 @@
 # Pistones (pedales)
 
-Tres actuadores lineales empujan los pedales del tractor: **freno, embrague y acelerador**. Cada uno convierte el giro de un motor en empuje lineal con un **husillo** (tornillo de avance). Los controla una sola Raspberry Pi Pico, con un driver por pistón.
+Tres actuadores lineales empujan los pedales del tractor: **freno, embrague y acelerador**. Cada uno convierte el giro de un motor en empuje lineal con un **husillo** (tornillo de avance), con un driver por pistón.
 
-- **Controlador:** Raspberry Pi Pico #3
+- **Controladores:**
+    - **Pico 2:** freno y embrague
+    - **Pico 3:** acelerador (comparte la Pico con la [palanca](palanca.md))
 - **Drivers:** 3 × DM860H (el mismo modelo que el volante), uno por pistón, alimentados a 24 V desde el [tablero](tablero.md)
 
 ---
@@ -43,7 +45,7 @@ Factor de seguridad = fuerza disponible ÷ fuerza requerida.
 
 | Componente | Modelo | Notas |
 |---|---|---|
-| Microcontrolador | Raspberry Pi Pico | Un solo micro para los tres pistones |
+| Microcontroladores | Raspberry Pi Pico 2 y Pico 3 | Pico 2: freno y embrague · Pico 3: acelerador |
 | Motores (x3) | NEMA 23 a pasos | 2.80 N·m |
 | Husillos (x3) | Paso 4 mm | η = 0.9 |
 | Drivers (x3) | DM860H | Step / Direction / Enable, 24 V |
@@ -51,10 +53,12 @@ Factor de seguridad = fuerza disponible ÷ fuerza requerida.
 
 ```mermaid
 flowchart LR
-    ROS[ROS 2] --> PICO[Pico pistones]
-    PICO --> D1[Driver 1] --> F[Freno]
-    PICO --> D2[Driver 2] --> E[Embrague]
-    PICO --> D3[Driver 3] --> A[Acelerador]
+    JET[Jetson Nano<br/>ROS 2] --> P2[Pico 2]
+    JET --> P3[Pico 3]
+    P2 --> D1[Driver] --> F[Freno]
+    P2 --> D2[Driver] --> E[Embrague]
+    P3 --> D3[Driver] --> A[Acelerador]
+    P3 -.-> PAL[Palanca]
 ```
 
 !!! note "Por confirmar"
@@ -73,7 +77,8 @@ flowchart LR
 ## Código
 
 ```cpp
-// Firmware de la Pico de los pistones
+// Firmware de la Pico 2 (freno y embrague)
+// El acelerador va en el firmware de la Pico 3, junto con la palanca
 ```
 
 ## Fotos

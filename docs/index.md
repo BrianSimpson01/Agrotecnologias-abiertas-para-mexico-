@@ -38,29 +38,31 @@ Un sistema **modular**: cada subsistema (dirección, pedales, palanca, percepci�
 |---|---|---|
 | **GNSS-RTK** | Sentidos (posición) | Posicionamiento satelital con corrección desde una estación base; error de centímetros en buenas condiciones. |
 | **LiDAR** | Sentidos (entorno) | Mide distancias a obstáculos con pulsos de luz. |
-| **ROS 2** | Cerebro | Planea la trayectoria y manda órdenes por tópicos. |
-| **Microcontroladores** | Nervios | Tres Raspberry Pi Pico (con micro-ROS) traducen cada orden en pulsos para los motores. |
+| **ROS 2 en Jetson Nano** | Cerebro | La Jetson Nano corre ROS 2: planea la trayectoria y manda órdenes por tópicos. |
+| **Microcontroladores** | Nervios | Tres Raspberry Pi Pico (con micro-ROS), conectadas a la Jetson, traducen cada orden en pulsos para los motores. |
 
 ```mermaid
 flowchart LR
-    GNSS[GNSS-RTK] --> ROS[ROS 2<br/>planeación y control]
+    GNSS[GNSS-RTK] --> ROS[Jetson Nano<br/>ROS 2: planeación y control]
     LIDAR[LiDAR] --> ROS
-    ROS -->|Ethernet UDP / micro-ROS| P1[Pico volante]
-    ROS --> P2[Pico palanca]
-    ROS --> P3[Pico pistones]
+    ROS -->|micro-ROS| P1[Pico 1]
+    ROS -->|micro-ROS| P2[Pico 2]
+    ROS -->|micro-ROS| P3[Pico 3]
     TAB[Tablero<br/>12 V → 24 V] -. energía .-> P1 & P2 & P3
     P1 --> V[Volante]
-    P2 --> PA[Palanca]
-    P3 --> PI[3 pistones: freno, embrague, acelerador]
+    P2 --> FR[Pistón freno]
+    P2 --> EM[Pistón embrague]
+    P3 --> PA[Palanca]
+    P3 --> AC[Pistón acelerador]
 ```
 
 | Subsistema | Controlador | Actuador | Página |
 |---|---|---|---|
 | Tablero de control | — | Etapa de potencia y 5 drivers | [Tablero](tablero.md) |
-| Volante | Pico #1 + ATtiny412 | NEMA 23, reducción 3:1, encoder AS5600 | [Volante](volante.md) |
-| Palanca | Pico #2 | Mecanismo articulado | [Palanca](palanca.md) |
-| Pistones | Pico #3 | 3 husillos sobre los pedales | [Pistones](pistones.md) |
-| Software | ROS 2 + Gazebo | Modelo URDF y nodo `goto_point.py` | [Software](software.md) |
+| Volante | Pico 1 + ATtiny412 | NEMA 23, reducción 3:1, encoder AS5600 | [Volante](volante.md) |
+| Freno y embrague | Pico 2 | 2 pistones (husillos) sobre los pedales | [Pistones](pistones.md) |
+| Palanca y acelerador | Pico 3 | Mecanismo articulado + pistón del acelerador | [Palanca](palanca.md) · [Pistones](pistones.md) |
+| Software | Jetson Nano: ROS 2 + Gazebo | Modelo URDF y nodo `goto_point.py` | [Software](software.md) |
 
 ---
 

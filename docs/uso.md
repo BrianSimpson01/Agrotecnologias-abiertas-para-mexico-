@@ -25,7 +25,7 @@ Revisa esto cada vez, con el tablero apagado y el motor del tractor apagado:
 Enciende primero lo que piensa y al final lo que mueve.
 
 1. Conecta el tablero a la batería del tractor (12 V).
-2. Verifica que las tres Pico encendieron (sus luces indicadoras).
+2. Verifica que la Jetson Nano y las tres Pico encendieron (sus luces indicadoras).
 3. Confirma que los tres mecanismos están en su posición de descanso.
 4. Activa la energía de los motores (24 V).
 5. Espera el **homing** del volante: busca sus dos topes y se centra en 0.0 rad. No toques el volante mientras tanto.

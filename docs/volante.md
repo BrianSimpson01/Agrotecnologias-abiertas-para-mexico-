@@ -32,7 +32,7 @@ El torque para girar el volante se obtuvo de una **medición real con dinamómet
 | Driver | DM860H | Amplificador entre el micro y el motor. Señales: Step, Direction, Enable |
 | Encoder | AS5600 (efecto Hall, 12 bits) | Mide la orientación de un imán pegado al eje: 0–4095 por vuelta, 0.088° por cuenta |
 | Lector del encoder | ATtiny412 | Lee el AS5600 por I2C y lo envía a la Pico |
-| Controlador | Raspberry Pi Pico (micro-ROS) | Calcula los pasos y se comunica con ROS 2 |
+| Controlador | Raspberry Pi Pico 1 (micro-ROS) | Calcula los pasos y se comunica con ROS 2 en la Jetson Nano |
 | Transmisión | Engranes 20 : 60 dientes | Reducción 3:1 |
 
 El encoder es **absoluto**: al encender ya sabe su ángulo (uno incremental arranca en cero).
@@ -47,7 +47,7 @@ flowchart LR
     AT -->|UART 115200<br/>trama + checksum XOR| PICO[Raspberry Pi Pico<br/>micro-ROS]
     PICO -->|Step / Dir / Enable| DRV[DM860H]
     DRV --> MOT[NEMA 23]
-    ROS[ROS 2] <-->|Ethernet UDP| PICO
+    ROS[Jetson Nano<br/>ROS 2] <-->|Ethernet UDP| PICO
 ```
 
 - **¿Por qué dos microcontroladores?** Para que la lectura del sensor nunca espere al control ni a la red. El ATtiny solo lee y envía; la Pico calcula y se comunica. También permite poner el sensor lejos de la tarjeta principal.
@@ -135,7 +135,7 @@ Archivos de SolidWorks del subsistema de dirección (piezas `.SLDPRT` y ensamble
 ## Código
 
 ```cpp
-// Firmware de la Pico del volante
+// Firmware de la Pico 1 (volante)
 ```
 
 ## Fotos
