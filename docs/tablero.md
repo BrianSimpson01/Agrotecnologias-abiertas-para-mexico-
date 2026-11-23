@@ -14,9 +14,10 @@ El tablero se divide en una **etapa de potencia** (batería → elevador → sal
 flowchart LR
     BAT[Batería del tractor<br/>12 V DC] --> BOOST[Elevador boost DC-DC<br/>12 → 24 V]
     BOOST --> V24[Salida 24 V]
-    BOOST --> V5[Salida 5 V]
-    BOOST --> V33[Salida 3.3 V]
-    V5 & V33 --> PICOS[3 Raspberry Pi Pico]
+    BOOST --> V5[Salida 5 V<br/>Jetson Nano]
+    BOOST --> V33[Salida 3.3 V<br/>Picos y sensores]
+    V33 --> PICOS[3 Raspberry Pi Pico]
+    V5 --> JET
     JET[Jetson Nano<br/>ROS 2] <--> PICOS
     ANT[2 antenas GNSS] --> GNSS[Módulo UM982<br/>GNSS-RTK]
     GNSS -->|USB → USB-C| JET
@@ -66,8 +67,8 @@ flowchart LR
 | Entrada | Batería del motor del tractor | Fuente primaria de energía | 12 V DC |
 | Potencia | Convertidor elevador (boost) DC-DC | Eleva la tensión de la batería | 12 V → 24 V DC |
 | Potencia | Salidas reguladas | Distribuyen la energía a lógica y potencia | 3.3 V, 5 V y 24 V DC |
-| Cómputo | Jetson Nano | Corre ROS 2; las tres Pico se conectan a ella | Por confirmar |
-| Sensado | 5 × encoder AS5600 + 5 × ATtiny412 | Uno por mecanismo (volante, palanca, freno, embrague, acelerador); miden la posición real y la envían a su Pico por UART | Lógica (3.3 o 5 V, por confirmar) |
+| Cómputo | Jetson Nano | Corre ROS 2; las tres Pico, el UM982 y el radio se conectan a ella | 5 V |
+| Sensado | 5 × encoder AS5600 + 5 × ATtiny412 | Uno por mecanismo (volante, palanca, freno, embrague, acelerador); miden la posición real y la envían a su Pico por UART | 3.3 V |
 | Control | Raspberry Pi Pico 1 — volante | Controla el driver del volante | Lógica 3.3 V |
 | Control | Raspberry Pi Pico 2 — freno y embrague | Controla los drivers de los pistones de freno y embrague | Lógica 3.3 V |
 | Control | Raspberry Pi Pico 3 — palanca y acelerador | Controla el driver de la palanca y el del pistón del acelerador | Lógica 3.3 V |
@@ -89,7 +90,8 @@ Las conexiones internas forman dos redes: la de **alimentación**, que reparte l
 | Entrada | Batería del tractor → convertidor elevador | 12 V DC |
 | Elevación | Convertidor → bus de potencia | 24 V DC |
 | Alimentación de potencia | Salida 24 V → los 5 drivers | 24 V DC |
-| Alimentación lógica | Salidas 5 V y 3.3 V → Picos y circuitos de señal | 5 V / 3.3 V DC |
+| Alimentación de la Jetson | Salida 5 V → Jetson Nano | 5 V DC |
+| Alimentación lógica | Salida 3.3 V → Picos y placas de sensado (ATtiny412 + AS5600) | 3.3 V DC |
 | Enlace de control | Jetson Nano ↔ Picos 1, 2 y 3 | micro-ROS |
 | Canal volante | Pico 1 → driver del volante | Señal de control |
 | Canal freno y embrague | Pico 2 → 2 drivers de pistón | Señal de control (2 salidas) |
@@ -160,9 +162,6 @@ El sistema mueve mandos de un vehículo pesado, así que debe poder detenerse de
 - Protección por fusible o interruptor termomagnético en el bus de 24 V.
 - Posición segura por defecto ante falla: freno aplicado y acelerador en reposo.
 - Separación física de cables de potencia y de señal dentro del gabinete.
-
-!!! warning "Por confirmar"
-    Modelo del convertidor y del driver de la palanca, alimentación de la Jetson Nano y si va dentro del gabinete, corrientes nominales, fusible en la entrada de 12 V, qué carga usa la salida de 3.3 V y cuál la de 5 V, protocolo de las líneas DATA, calibre del cableado de 24 V, modelo del radio y de la estación base, y ubicación del paro de emergencia.
 
 ---
 
