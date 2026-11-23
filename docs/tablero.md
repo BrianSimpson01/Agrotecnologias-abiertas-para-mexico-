@@ -83,6 +83,11 @@ Las conexiones internas forman dos redes: la de **alimentación**, que reparte l
 
 Cada componente tiene su propia placa, pero todas usan **el mismo diseño de PCB**: una por mecanismo en el volante, la palanca y cada pistón (freno, embrague y acelerador). La placa conecta la Pico con el driver de su motor y sustituye el cableado suelto por pistas de cobre, lo que hace el sistema repetible.
 
+<figure markdown="span">
+  ![Vista 3D de la PCB de actuador](recursos/pcb/PCB_Actuador_3D.jpg){ width="600" }
+  <figcaption>Vista 3D de la PCB de actuador en Altium: conectores CONTROL, ENDSTOP y FAN, y el encoder AS5600.</figcaption>
+</figure>
+
 | Dónde se usa | Placas |
 |---|---|
 | [Volante](volante.md) | 1 |
