@@ -38,19 +38,19 @@ La separación en canales **aísla fallas**: si un canal se detiene, los otros d
 
 El tractor sabe dónde está con un sistema **GNSS-RTK** de dos partes: una **estación base** fija y el **rover** (el tractor).
 
-- **Estación base:** está fija en lo alto de un edificio. Como conoce su posición exacta, calcula las correcciones y las transmite por **radiofrecuencia**.
-- **Rover (el tractor):** las dos antenas GNSS van conectadas al módulo **UM982**, que calcula la posición. Un **módulo de radio** recibe las correcciones de la base. Los dos se conectan por **USB a la Jetson Nano**: el UM982 por su USB-C y el radio por USB directo.
+- **Estación base:** está fija en la azotea del edificio del **IDIT** de la Ibero Puebla. Como conoce su posición exacta, su receptor GNSS calcula las correcciones y se las pasa por **TX/RX (UART)** a un radio de pines, que las transmite por **radiofrecuencia**.
+- **Rover (el tractor):** las dos antenas GNSS van conectadas al módulo **UM982**, que calcula la posición. Un **radio con conector USB** (el módulo de tierra) recibe las correcciones de la base. Los dos se conectan por **USB a la Jetson Nano**: el UM982 por su USB-C y el radio por USB directo.
 - **Resultado:** con las correcciones, el error de la posición baja de metros a centímetros. Con dos antenas, el UM982 también puede calcular hacia dónde apunta el tractor (rumbo).
 
 ```mermaid
 flowchart LR
-    subgraph BASE[Estación base · azotea]
-        BGNSS[Receptor GNSS base] --> BRAD[Radio base]
+    subgraph BASE[Estación base · azotea del IDIT]
+        BGNSS[Receptor GNSS base] -->|TX/RX| BRAD[Radio de pines]
     end
     subgraph ROVER[Rover · tractor]
         A1[Antena GNSS 1] --> UM[UM982]
         A2[Antena GNSS 2] --> UM
-        RRAD[Radio del rover]
+        RRAD[Radio USB<br/>módulo de tierra]
         UM -->|USB → USB-C| JET[Jetson Nano<br/>ROS 2]
         RRAD -->|USB| JET
     end
@@ -58,7 +58,7 @@ flowchart LR
 ```
 
 !!! note "Por confirmar"
-    Modelo del receptor de la estación base, modelo de los radios, frecuencia de transmisión y cómo llegan las correcciones al UM982 (a través de la Jetson).
+    Modelo del receptor de la estación base, modelo de los radios, velocidad del enlace (baudios) y frecuencia de transmisión.
 
 ---
 
@@ -79,7 +79,7 @@ flowchart LR
 | Potencia de salida | Drivers de pistones (3 × DM860H, uno por pistón) | Entregan corriente a cada pistón | 24 V |
 | Posicionamiento | 2 antenas GNSS UM980 (encima de la caja) | Reciben la señal de los satélites | Cable a las entradas de antena del UM982 |
 | Posicionamiento | Módulo GNSS-RTK UM982 (rover) | Calcula la posición del tractor con las dos antenas y las correcciones RTK | USB (Jetson) → USB-C (UM982) |
-| Comunicación | Módulo de radio del rover | Recibe por radiofrecuencia las correcciones de la estación base | USB directo a la Jetson Nano |
+| Comunicación | Radio USB (módulo de tierra) | Recibe por radiofrecuencia las correcciones de la estación base | USB directo a la Jetson Nano |
 
 ---
 
