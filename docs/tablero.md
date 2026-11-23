@@ -71,10 +71,49 @@ Las conexiones internas forman dos redes: la de **alimentación**, que reparte l
 
 ## Fabricación
 
-- **PCB:** cada mecanismo tiene su propia placa, que sustituye el cableado suelto por pistas de cobre y hace el sistema repetible. Descargas: [PCB del pistón](pistones.md#pcb-del-piston).
+- **PCB:** cada mecanismo tiene su propia placa, todas con el mismo diseño. Ver [PCB de actuador](#pcb-de-actuador).
 - **Ampacidad:** el calibre de cada cable se eligió según la corriente que lleva.
 - **Paro de emergencia por hardware:** un circuito físico que corta la potencia aunque el programa esté colgado.
 - **Pruebas realizadas:** continuidad, alimentación, sincronización electrónica y respuesta conjunta bajo condiciones operativas simuladas.
+
+---
+
+## PCB de actuador
+
+Cada componente tiene su propia placa, pero todas usan **el mismo diseño de PCB**: una por mecanismo en el volante, la palanca y cada pistón (freno, embrague y acelerador). La placa conecta la Pico con el driver de su motor y sustituye el cableado suelto por pistas de cobre, lo que hace el sistema repetible.
+
+| Dónde se usa | Placas |
+|---|---|
+| [Volante](volante.md) | 1 |
+| [Palanca](palanca.md) | 1 |
+| [Pistones](pistones.md) (freno, embrague y acelerador) | 3 |
+
+[:material-download: Proyecto Altium completo (.zip, 10 MB)](recursos/pcb/PCB_Actuador.zip){ .md-button .md-button--primary }
+[:material-download: Gerbers para fabricar (.zip)](recursos/pcb/PCB_Actuador_Gerbers.zip){ .md-button }
+
+El proyecto está hecho en **Altium Designer**.
+
+| Archivo | Qué es |
+|---|---|
+| `PCB_Piston.PrjPcb` | Proyecto de Altium |
+| `Sheet1.SchDoc` | Esquemático |
+| `PCB1.PcbDoc` | Diseño de la placa |
+| `PCB_PISTON_NEMA23.zip` | Gerbers (generados el 2 de septiembre de 2026) |
+
+| Capa Gerber | Extensión |
+|---|---|
+| Cobre superior / inferior | `.GTL` / `.GBL` |
+| Máscara de soldadura superior / inferior | `.GTS` / `.GBS` |
+| Pasta superior / inferior | `.GTP` / `.GBP` |
+| Serigrafía superior / inferior | `.GTO` / `.GBO` |
+| Contorno de la placa | `.GM` |
+| Mecánica 1 | `.GM1` |
+
+!!! note "Nombres internos"
+    Dentro del zip los archivos conservan su nombre original (`PCB_Piston`), porque Altium enlaza el proyecto con sus documentos por nombre y cambiarlos rompería el proyecto.
+
+!!! tip "Para fabricarla"
+    Sube `PCB_Actuador_Gerbers.zip` tal cual al fabricante (por ejemplo JLCPCB o PCBWay); detecta las capas por su extensión. Pide 5 placas para cubrir volante, palanca y los tres pistones.
 
 ---
 

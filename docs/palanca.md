@@ -69,6 +69,12 @@ Piezas de SolidWorks (`.SLDPRT`) del mecanismo de la palanca.
 
 ---
 
+## PCB
+
+La palanca lleva su propia **PCB de actuador**, el mismo diseño que usan el volante y los pistones. Descargas y detalles en [Tablero → PCB de actuador](tablero.md#pcb-de-actuador).
+
+---
+
 ## Conexiones
 
 | Pico (GPIO) | Conecta a | Señal |

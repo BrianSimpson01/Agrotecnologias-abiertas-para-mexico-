@@ -132,6 +132,12 @@ Archivos de SolidWorks del subsistema de dirección (piezas `.SLDPRT` y ensamble
 
 ---
 
+## PCB
+
+El volante lleva su propia **PCB de actuador**, el mismo diseño que usan la palanca y los pistones. Descargas y detalles en [Tablero → PCB de actuador](tablero.md#pcb-de-actuador).
+
+---
+
 ## Código
 
 ```cpp
