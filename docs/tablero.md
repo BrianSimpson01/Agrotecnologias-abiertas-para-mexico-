@@ -38,14 +38,14 @@ La separación en canales **aísla fallas**: si un canal se detiene, los otros d
 
 El tractor sabe dónde está con un sistema **GNSS-RTK** de dos partes: una **estación base** fija y el **rover** (el tractor).
 
-- **Estación base:** está fija en la azotea del edificio del **IDIT** de la Ibero Puebla. Como conoce su posición exacta, su receptor GNSS calcula las correcciones y se las pasa por **TX/RX (UART)** a un radio de pines, que las transmite por **radiofrecuencia**.
+- **Estación base:** está fija en la azotea del edificio del **IDIT** de la Ibero Puebla. Como conoce su posición exacta, su receptor GNSS **UM982** calcula las correcciones y se las pasa por **TX/RX (UART)** a un radio de pines, que las transmite por **radiofrecuencia**.
 - **Rover (el tractor):** las dos antenas GNSS van conectadas al módulo **UM982**, que calcula la posición. Un **radio con conector USB** (el módulo de tierra) recibe las correcciones de la base. Los dos se conectan por **USB a la Jetson Nano**: el UM982 por su USB-C y el radio por USB directo.
 - **Resultado:** con las correcciones, el error de la posición baja de metros a centímetros. Con dos antenas, el UM982 también puede calcular hacia dónde apunta el tractor (rumbo).
 
 ```mermaid
 flowchart LR
     subgraph BASE[Estación base · azotea del IDIT]
-        BGNSS[Receptor GNSS base] -->|TX/RX| BRAD[Radio de pines]
+        BGNSS[UM982 base] -->|TX/RX| BRAD[Radio de pines]
     end
     subgraph ROVER[Rover · tractor]
         A1[Antena GNSS 1] --> UM[UM982]
@@ -58,7 +58,7 @@ flowchart LR
 ```
 
 !!! note "Por confirmar"
-    Modelo del receptor de la estación base, modelo de los radios, velocidad del enlace (baudios) y frecuencia de transmisión.
+    Modelo de los radios, velocidad del enlace (baudios) y frecuencia de transmisión.
 
 ---
 
