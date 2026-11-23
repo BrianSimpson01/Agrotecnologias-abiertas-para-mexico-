@@ -40,6 +40,7 @@ La separación en canales **aísla fallas**: si un canal se detiene, los otros d
 | Potencia | Convertidor elevador (boost) DC-DC | Eleva la tensión de la batería | 12 V → 24 V DC |
 | Potencia | Salidas reguladas | Distribuyen la energía a lógica y potencia | 3.3 V, 5 V y 24 V DC |
 | Cómputo | Jetson Nano | Corre ROS 2; las tres Pico se conectan a ella | Por confirmar |
+| Sensado | 5 × encoder AS5600 + 5 × ATtiny412 | Uno por mecanismo (volante, palanca, freno, embrague, acelerador); miden la posición real y la envían a su Pico por UART | Lógica (3.3 o 5 V, por confirmar) |
 | Control | Raspberry Pi Pico 1 — volante | Controla el driver del volante | Lógica 3.3 V |
 | Control | Raspberry Pi Pico 2 — freno y embrague | Controla los drivers de los pistones de freno y embrague | Lógica 3.3 V |
 | Control | Raspberry Pi Pico 3 — palanca y acelerador | Controla el driver de la palanca y el del pistón del acelerador | Lógica 3.3 V |

@@ -42,7 +42,12 @@ Las velocidades del tractor se cronometraron en un tramo de 50 m:
 | Microcontrolador | Raspberry Pi Pico 3 | Compartida con el pistón del acelerador |
 | Driver | *Por completar* (el más pequeño del tablero) | 24 V |
 | Actuador | *Por completar* | |
+| Encoder | AS5600 (efecto Hall, 12 bits) | Mide la posición real del eje: 0–4095 por vuelta, 0.088° por cuenta |
+| Lector del encoder | ATtiny412 | Lee el AS5600 por I2C y lo envía a la Pico 3 por UART |
 | Mecanismo | Articulado, impreso en 3D | |
+
+Cada encoder se lee igual que en el volante: el ATtiny412 lee el AS5600 por I2C y le manda el ángulo a la Pico por UART con checksum XOR (ver [Volante → procesamiento en dos capas](volante.md#procesamiento-en-dos-capas)).
+
 
 !!! note "Por completar"
     El reporte todavía no trae los cálculos ni los resultados de la palanca: posiciones (velocidades) que acciona, fuerza requerida, recorrido, actuador y modelo del driver.

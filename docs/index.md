@@ -60,8 +60,8 @@ flowchart LR
 |---|---|---|---|
 | Tablero de control | — | Etapa de potencia y 5 drivers | [Tablero](tablero.md) |
 | Volante | Pico 1 + ATtiny412 | NEMA 23, reducción 3:1, encoder AS5600 | [Volante](volante.md) |
-| Freno y embrague | Pico 2 | 2 pistones (husillos) sobre los pedales | [Pistones](pistones.md) |
-| Palanca y acelerador | Pico 3 | Mecanismo articulado + pistón del acelerador | [Palanca](palanca.md) · [Pistones](pistones.md) |
+| Freno y embrague | Pico 2 + 2 ATtiny412 | 2 pistones (husillos), encoders AS5600 | [Pistones](pistones.md) |
+| Palanca y acelerador | Pico 3 + 2 ATtiny412 | Mecanismo articulado + pistón del acelerador, encoders AS5600 | [Palanca](palanca.md) · [Pistones](pistones.md) |
 | Software | Jetson Nano: ROS 2 + Gazebo | Modelo URDF y nodo `goto_point.py` | [Software](software.md) |
 
 ---

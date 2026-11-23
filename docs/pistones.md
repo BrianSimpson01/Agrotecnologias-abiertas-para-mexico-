@@ -49,7 +49,12 @@ Factor de seguridad = fuerza disponible ÷ fuerza requerida.
 | Motores (x3) | NEMA 23 a pasos | 2.80 N·m |
 | Husillos (x3) | Paso 4 mm | η = 0.9 |
 | Drivers (x3) | DM860H | Step / Direction / Enable, 24 V |
+| Encoders (x3) | AS5600 (efecto Hall, 12 bits) | Uno por pistón; mide la posición real del eje del motor |
+| Lectores del encoder (x3) | ATtiny412 | Uno por pistón; lee su AS5600 por I2C y lo envía a su Pico por UART |
 | Soportes | Impresos en 3D, con abrazaderas | No invasivos |
+
+Cada encoder se lee igual que en el volante: el ATtiny412 lee el AS5600 por I2C y le manda el ángulo a la Pico por UART con checksum XOR (ver [Volante → procesamiento en dos capas](volante.md#procesamiento-en-dos-capas)).
+
 
 ```mermaid
 flowchart LR
