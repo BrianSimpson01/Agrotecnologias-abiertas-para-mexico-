@@ -1,3 +1,7 @@
+---
+icon: material/book-open-variant
+---
+
 # Uso
 
 Cómo revisar, encender, operar y apagar el kit con seguridad.

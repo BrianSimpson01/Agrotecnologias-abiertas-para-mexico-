@@ -1,3 +1,7 @@
+---
+icon: material/steering
+---
+
 # Volante
 
 El subsistema de dirección gira el volante con un **motor a pasos NEMA 23** acoplado por una **reducción 3:1**, y mide su posición real con un **encoder magnético absoluto AS5600**. No necesita interruptores de límite: encuentra sus topes solo al encender.

@@ -1,3 +1,7 @@
+---
+icon: material/arrow-expand-down
+---
+
 # Pistones (pedales)
 
 Tres actuadores lineales empujan los pedales del tractor: **freno, embrague y acelerador**. Cada uno convierte el giro de un motor en empuje lineal con un **husillo** (tornillo de avance), con un driver por pistón.

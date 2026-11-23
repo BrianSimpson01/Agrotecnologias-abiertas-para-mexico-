@@ -1,3 +1,7 @@
+---
+icon: material/view-dashboard-outline
+---
+
 # Tablero de control
 
 El tablero es el **gabinete que concentra la electrónica del kit** (no es el tablero de instrumentos del tractor). Se alimenta de la batería de 12 V del motor del tractor, eleva esa tensión a 24 V y entrega tres salidas reguladas (3.3 V, 5 V y 24 V) a tres Raspberry Pi Pico y a sus drivers. Las tres Pico se conectan a una **Jetson Nano**, que corre ROS 2. Encima de la caja van las **dos antenas GNSS** del módulo **UM982** (ver [Posicionamiento GNSS-RTK](#posicionamiento-gnss-rtk)).

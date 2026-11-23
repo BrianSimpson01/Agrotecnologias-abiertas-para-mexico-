@@ -1,54 +1,98 @@
 site_name: Agrotecnologías abiertas para México
+site_description: Kit de retrofit no invasivo para el manejo autónomo de tractores agrícolas. Universidad Iberoamericana Puebla.
+site_author: Equipo Agrotecnologías abiertas para México
 site_url: https://briansimpson01.github.io/Agrotecnologias-abiertas-para-mexico-/
 repo_url: https://github.com/BrianSimpson01/Agrotecnologias-abiertas-para-mexico-
+repo_name: Agrotecnologias-abiertas-para-mexico-
+edit_uri: ""
+copyright: >
+  © 2026 Equipo Agrotecnologías abiertas para México ·
+  Ingeniería Mecatrónica · Universidad Iberoamericana Puebla
 
 nav:
   - Inicio: index.md
-  - Tablero: tablero.md
-  - Volante: volante.md
-  - Palanca: palanca.md
-  - Pistones: pistones.md
+  - Hardware:
+      - Tablero: tablero.md
+      - Volante: volante.md
+      - Palanca: palanca.md
+      - Pistones: pistones.md
   - Software: software.md
   - Uso: uso.md
 
+theme:
+  name: material
+  language: es
+  font:
+    text: Source Sans 3
+    code: JetBrains Mono
+  icon:
+    logo: material/tractor-variant
+    repo: fontawesome/brands/github
+  favicon: assets/favicon.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tooltips
+
+extra_css:
+  - stylesheets/ibero.css
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/BrianSimpson01/Agrotecnologias-abiertas-para-mexico-
+      name: Repositorio en GitHub
+
 markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.blocks.caption
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
+  - pymdownx.keys
   - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.caret
-  - pymdownx.keys
-  - def_list
-  - attr_list
-  - md_in_html
-  - pymdownx.blocks.caption
-  - admonition
-  - pymdownx.details
-  - pymdownx.emoji
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
-      clickable_checkbox: true
-  - tables
-
-theme:
-  name: material
-  language: es
-  palette:
-    - scheme: default
-      primary: green
-  features:
-    - content.code.copy
-    - content.tooltips
-    - navigation.sections
-
-extra_css:
-  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css

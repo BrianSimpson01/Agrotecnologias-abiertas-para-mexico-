@@ -1,3 +1,7 @@
+---
+icon: material/car-shift-pattern
+---
+
 # Palanca de velocidades y acelerador
 
 La palanca se acciona con un **mecanismo articulado** que respeta el recorrido de la transmisión original del tractor. Ya está construida e integrada al sistema.

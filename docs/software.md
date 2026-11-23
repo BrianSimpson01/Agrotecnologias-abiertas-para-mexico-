@@ -1,3 +1,7 @@
+---
+icon: material/code-braces
+---
+
 # Software (ROS 2)
 
 El software de navegación corre en **ROS 2** sobre una **Jetson Nano**, a la que se conectan las tres Raspberry Pi Pico. Se prueba primero en simulación con **Gazebo Harmonic**. El workspace tiene dos paquetes: el modelo del tractor con su nodo de control y los mensajes propios de los actuadores.

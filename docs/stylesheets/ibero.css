@@ -1,0 +1,308 @@
+/* =========================================================
+   Paleta institucional Universidad Iberoamericana
+   Rojo PMS 185 C  #E00034 · Warm Gray 9 C  #82786F · Negro
+   ========================================================= */
+
+:root {
+  --ibero-rojo: #E00034;
+  --ibero-rojo-oscuro: #B3002A;
+  --ibero-rojo-claro: #FDE6EB;
+  --ibero-gris: #82786F;
+  --ibero-gris-claro: #F4F2F0;
+  --ibero-negro: #1A1A1A;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--ibero-rojo);
+  --md-primary-fg-color--light: #EF4D6E;
+  --md-primary-fg-color--dark: var(--ibero-rojo-oscuro);
+  --md-primary-bg-color: #FFFFFF;
+  --md-accent-fg-color: var(--ibero-rojo-oscuro);
+  --md-accent-fg-color--transparent: rgba(224, 0, 52, 0.08);
+  --md-typeset-a-color: var(--ibero-rojo);
+  --md-default-fg-color: var(--ibero-negro);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 20;
+  --md-primary-fg-color: var(--ibero-rojo);
+  --md-primary-fg-color--light: #EF4D6E;
+  --md-primary-fg-color--dark: var(--ibero-rojo-oscuro);
+  --md-accent-fg-color: #FF4D73;
+  --md-accent-fg-color--transparent: rgba(255, 77, 115, 0.1);
+  --md-typeset-a-color: #FF5C80;
+  --md-default-bg-color: #161414;
+}
+
+/* ---------- Encabezado y pestañas ---------- */
+
+.md-header {
+  background: var(--ibero-rojo);
+  box-shadow: none;
+}
+
+.md-tabs {
+  background: var(--ibero-negro);
+}
+
+.md-tabs__link {
+  opacity: 0.8;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  opacity: 1;
+  color: #FFFFFF;
+}
+
+.md-header__title {
+  font-weight: 700;
+}
+
+/* ---------- Tipografía ---------- */
+
+.md-typeset h1 {
+  font-weight: 800;
+  color: var(--md-default-fg-color);
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  padding-bottom: 0.3rem;
+  border-bottom: 3px solid var(--ibero-rojo);
+  display: inline-block;
+  margin-top: 1.4em;
+}
+
+.md-typeset h3 {
+  font-weight: 700;
+  color: var(--ibero-gris);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h3 {
+  color: #B9B0A8;
+}
+
+.md-typeset hr {
+  border-bottom: 1px solid rgba(130, 120, 111, 0.2);
+  margin: 1.5em 0 0.5em;
+}
+
+/* ---------- Tablas ---------- */
+
+.md-typeset table:not([class]) {
+  border: none;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-size: 0.72rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--ibero-rojo);
+  color: #FFFFFF;
+  font-weight: 700;
+  border: none;
+}
+
+.md-typeset table:not([class]) td {
+  border-top: 1px solid rgba(130, 120, 111, 0.18);
+}
+
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+  background: var(--ibero-gris-claro);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background: var(--ibero-rojo-claro);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:hover {
+  background: rgba(224, 0, 52, 0.12);
+}
+
+/* ---------- Botones ---------- */
+
+.md-typeset .md-button {
+  border-radius: 4px;
+  font-weight: 700;
+  border-width: 2px;
+}
+
+.md-typeset .md-button--primary {
+  background: var(--ibero-rojo);
+  border-color: var(--ibero-rojo);
+  color: #FFFFFF;
+}
+
+.md-typeset .md-button--primary:hover {
+  background: var(--ibero-rojo-oscuro);
+  border-color: var(--ibero-rojo-oscuro);
+}
+
+/* ---------- Avisos ---------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 6px;
+  font-size: 0.72rem;
+}
+
+/* ---------- Imágenes ---------- */
+
+.md-typeset figure img {
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+.md-typeset figcaption {
+  color: var(--ibero-gris);
+  font-style: italic;
+}
+
+/* ---------- Portada ---------- */
+
+.hero {
+  background: linear-gradient(135deg, var(--ibero-rojo) 0%, var(--ibero-rojo-oscuro) 100%);
+  color: #FFFFFF;
+  border-radius: 10px;
+  padding: 2.4rem 2rem 2rem;
+  margin: 0 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 40px solid rgba(255, 255, 255, 0.07);
+}
+
+.md-typeset .hero h1 {
+  color: #FFFFFF;
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+}
+
+.hero .hero__kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  opacity: 0.85;
+  margin: 0 0 0.6rem;
+}
+
+.hero .hero__lead {
+  font-size: 0.95rem;
+  max-width: 38rem;
+  opacity: 0.95;
+}
+
+.md-typeset .hero .md-button {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  margin: 0.4rem 0.4rem 0 0;
+}
+
+.md-typeset .hero .md-button--primary {
+  background: #FFFFFF;
+  color: var(--ibero-rojo);
+}
+
+.md-typeset .hero .md-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.md-typeset .hero .md-button--primary:hover {
+  background: var(--ibero-gris-claro);
+  color: var(--ibero-rojo-oscuro);
+}
+
+/* Cifras */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.stat {
+  border-left: 4px solid var(--ibero-rojo);
+  background: var(--ibero-gris-claro);
+  padding: 0.7rem 0.9rem;
+  border-radius: 0 6px 6px 0;
+}
+
+[data-md-color-scheme="slate"] .stat {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.stat__num {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ibero-rojo);
+  line-height: 1.1;
+}
+
+.stat__label {
+  font-size: 0.68rem;
+  color: var(--ibero-gris);
+}
+
+/* Tarjetas */
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > ol > li {
+  border-radius: 8px;
+  border-top: 4px solid var(--ibero-rojo);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(224, 0, 52, 0.15);
+  border-color: var(--ibero-rojo);
+}
+
+.md-typeset .grid.cards .lg {
+  color: var(--ibero-rojo);
+}
+
+/* Equipo */
+
+.team {
+  columns: 2;
+  column-gap: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .team { columns: 1; }
+  .hero { padding: 1.6rem 1.2rem; }
+  .md-typeset .hero h1 { font-size: 1.5rem; }
+}
+
+/* ---------- Pie de página ---------- */
+
+.md-footer {
+  background: var(--ibero-negro);
+}
+
+.md-footer-meta {
+  background: #0F0F0F;
+  border-top: 3px solid var(--ibero-rojo);
+}
