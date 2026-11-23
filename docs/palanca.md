@@ -47,6 +47,26 @@ Las velocidades del tractor se cronometraron en un tramo de 50 m:
 
 ---
 
+## Piezas CAD
+
+Piezas de SolidWorks (`.SLDPRT`) del mecanismo de la palanca.
+
+[:material-download: Descargar piezas de la palanca (.zip, 3.5 MB)](recursos/cad/Piezas_Palanca.zip){ .md-button .md-button--primary }
+
+| Grupo | Archivos |
+|---|---|
+| Base y montaje | `BasePalanca`, `porta palanca`, `ChumaceraPalanca`, `perfil1`, `C` |
+| Soportes | `soporte angulo`, `soporte metal`, `soporte metal2`, `soporte metal3`, `soporte metal4` |
+| Motor y carcasa | `CarcasaHectorin`, `tapa carcasa`, `TapaMotor` |
+| Transmisión | `40 a 20 ajustable`, `TuercaTM8` |
+| Tornillería | `arandela M6`, `arandela M8`, `arandela M10`, `tuerca M4` |
+| Pruebas de impresión | `PruebaEsquina`, `PruebaEsquina15`, `PruebaEsquina30` |
+
+!!! note "Sin ensamble"
+    El paquete trae solo piezas (22 archivos `.SLDPRT`); no incluye el ensamble `.SLDASM`.
+
+---
+
 ## Conexiones
 
 | Pico (GPIO) | Conecta a | Señal |
