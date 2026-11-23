@@ -1,0 +1,53 @@
+﻿site_name: AgrotecnologÃ­as abiertas para MÃ©xico
+site_url: https://briansimpson01.github.io/Agrotecnologias-abiertas-para-mexico-/
+repo_url: https://github.com/BrianSimpson01/Agrotecnologias-abiertas-para-mexico-
+
+nav:
+  - Inicio: index.md
+  - Tablero: tablero.md
+  - Volante: volante.md
+  - Palanca: palanca.md
+  - Pistones: pistones.md
+  - Uso: uso.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.caret
+  - pymdownx.keys
+  - def_list
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - tables
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: green
+  features:
+    - content.code.copy
+    - content.tooltips
+    - navigation.sections
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css
