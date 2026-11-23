@@ -5,7 +5,7 @@ Documentación del proyecto hecha con **MkDocs + Material**.
 ## Contenido
 
 - `docs/`: páginas del sitio (MkDocs).
-- `ros2_ws/`: workspace de ROS 2 (modelo del Kubota y nodo de control). Original: https://github.com/AngelDominguezCruz/tractor_autonomo
+- `ros2_ws/`: workspace de ROS 2 (modelo del Kubota y nodo de control).
 
 ## Ver localmente
 

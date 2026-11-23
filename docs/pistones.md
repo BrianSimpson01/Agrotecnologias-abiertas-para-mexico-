@@ -43,17 +43,15 @@ Factor de seguridad = fuerza disponible ÷ fuerza requerida.
 
 ## Componentes
 
-| Componente | Modelo | Notas |
+| Componente | Modelo | Función |
 |---|---|---|
-| Microcontroladores | Raspberry Pi Pico 2 y Pico 3 | Pico 2: freno y embrague · Pico 3: acelerador |
-| Motores (x3) | NEMA 23 a pasos | 2.80 N·m |
-| Husillos (x3) | Paso 4 mm | η = 0.9 |
-| Drivers (x3) | DM860H | Step / Direction / Enable, 24 V |
-| Encoders (x3) | AS5600 (efecto Hall, 12 bits) | Uno por pistón; mide la posición real del eje del motor |
-| Lectores del encoder (x3) | ATtiny412 | Uno por pistón; lee su AS5600 por I2C y lo envía a su Pico por UART |
-| Soportes | Impresos en 3D, con abrazaderas | No invasivos |
-
-Cada encoder se lee igual que en el volante: el ATtiny412 lee el AS5600 por I2C y le manda el ángulo a la Pico por UART con checksum XOR (ver [Volante → procesamiento en dos capas](volante.md#procesamiento-en-dos-capas)).
+| Motor (x3) | NEMA 23 (cara de 57 mm), a pasos | Gira en incrementos fijos: contar pulsos es contar ángulo |
+| Husillo (x3) | Paso 4 mm, η = 0.9 | Convierte el giro del motor en empuje lineal sobre el pedal |
+| Driver (x3) | DM860H | Amplificador entre el micro y el motor. Señales: Step, Direction, Enable |
+| Encoder (x3) | AS5600 (efecto Hall, 12 bits) | Mide la orientación de un imán pegado al eje: 0–4095 por vuelta, 0.088° por cuenta |
+| Lector del encoder (x3) | ATtiny412 | Lee el AS5600 por I2C y lo envía a la Pico |
+| Controladores | Raspberry Pi Pico 2 y Pico 3 (micro-ROS) | Pico 2: freno y embrague · Pico 3: acelerador |
+| Soportes | Impresos en 3D, con abrazaderas | Montaje no invasivo sobre los pedales |
 
 
 ```mermaid

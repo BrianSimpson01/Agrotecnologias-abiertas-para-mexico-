@@ -3,9 +3,8 @@
 El software de navegación corre en **ROS 2** sobre una **Jetson Nano**, a la que se conectan las tres Raspberry Pi Pico. Se prueba primero en simulación con **Gazebo Harmonic**. El workspace tiene dos paquetes: el modelo del tractor con su nodo de control y los mensajes propios de los actuadores.
 
 [:material-download: Descargar workspace ROS 2 (.zip)](recursos/software/ros2_ws.zip){ .md-button .md-button--primary }
-[:fontawesome-brands-github: Repositorio original](https://github.com/AngelDominguezCruz/tractor_autonomo){ .md-button }
 
-El código también está en la carpeta [`ros2_ws/`](https://github.com/BrianSimpson01/Agrotecnologias-abiertas-para-mexico-/tree/main/ros2_ws) de este repositorio. Autor original: Ángel Iván Domínguez Cruz.
+El código también está en la carpeta [`ros2_ws/`](https://github.com/BrianSimpson01/Agrotecnologias-abiertas-para-mexico-/tree/main/ros2_ws) de este repositorio.
 
 ---
 
@@ -138,4 +137,4 @@ ros2 topic pub --once /goal_pose geometry_msgs/msg/Point "{x: 5.0, y: 2.0, z: 0.
 ```
 
 !!! note "Siguiente paso"
-    Según el último commit del repositorio original, los paquetes se están migrando a la **Jetson Nano**.
+    Los paquetes se están migrando a la **Jetson Nano**.

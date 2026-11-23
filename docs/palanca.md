@@ -37,16 +37,14 @@ Las velocidades del tractor se cronometraron en un tramo de 50 m:
 
 ## Componentes
 
-| Componente | Modelo | Notas |
+| Componente | Modelo | Función |
 |---|---|---|
-| Microcontrolador | Raspberry Pi Pico 3 | Compartida con el pistón del acelerador |
-| Driver | *Por completar* (el más pequeño del tablero) | 24 V |
-| Actuador | *Por completar* | |
-| Encoder | AS5600 (efecto Hall, 12 bits) | Mide la posición real del eje: 0–4095 por vuelta, 0.088° por cuenta |
-| Lector del encoder | ATtiny412 | Lee el AS5600 por I2C y lo envía a la Pico 3 por UART |
-| Mecanismo | Articulado, impreso en 3D | |
-
-Cada encoder se lee igual que en el volante: el ATtiny412 lee el AS5600 por I2C y le manda el ángulo a la Pico por UART con checksum XOR (ver [Volante → procesamiento en dos capas](volante.md#procesamiento-en-dos-capas)).
+| Motor | *Por completar* | Mueve el mecanismo articulado de la palanca |
+| Driver | *Por completar* (el más pequeño del tablero) | Amplificador entre el micro y el motor, a 24 V |
+| Encoder | AS5600 (efecto Hall, 12 bits) | Mide la orientación de un imán pegado al eje: 0–4095 por vuelta, 0.088° por cuenta |
+| Lector del encoder | ATtiny412 | Lee el AS5600 por I2C y lo envía a la Pico |
+| Controlador | Raspberry Pi Pico 3 (micro-ROS) | Controla la palanca y el pistón del acelerador; se comunica con ROS 2 en la Jetson Nano |
+| Mecanismo | Articulado, impreso en 3D | Respeta el recorrido de la transmisión original |
 
 
 !!! note "Por completar"
