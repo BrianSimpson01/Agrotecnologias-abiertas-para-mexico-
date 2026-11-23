@@ -3,7 +3,7 @@
 Tres actuadores lineales empujan los pedales del tractor: **freno, embrague y acelerador**. Cada uno convierte el giro de un motor en empuje lineal con un **husillo** (tornillo de avance). Los controla una sola Raspberry Pi Pico, con un driver por pistón.
 
 - **Controlador:** Raspberry Pi Pico #3
-- **Drivers:** 3, uno por pistón, alimentados a 24 V desde el [tablero](tablero.md)
+- **Drivers:** 3 × DM860H (el mismo modelo que el volante), uno por pistón, alimentados a 24 V desde el [tablero](tablero.md)
 
 ---
 
@@ -46,7 +46,7 @@ Factor de seguridad = fuerza disponible ÷ fuerza requerida.
 | Microcontrolador | Raspberry Pi Pico | Un solo micro para los tres pistones |
 | Motores (x3) | NEMA 23 a pasos | 2.80 N·m |
 | Husillos (x3) | Paso 4 mm | η = 0.9 |
-| Drivers (x3) | *Por completar* | 24 V |
+| Drivers (x3) | DM860H | Step / Direction / Enable, 24 V |
 | Soportes | Impresos en 3D, con abrazaderas | No invasivos |
 
 ```mermaid

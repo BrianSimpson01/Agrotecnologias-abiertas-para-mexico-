@@ -110,7 +110,6 @@ Cumple el requisito de no invasivo y se adapta a otro tractor sin reprogramar el
     - Qué hace la Pico si deja de recibir comandos de ROS 2 (¿tiempo límite que detenga el motor?).
     - Si el firmware corrige con la lectura del encoder cuando el motor pierde pasos, o solo lo reporta.
     - El reporte usa 3 N·m para este motor y 2.80 N·m en los pedales: unificar el valor.
-    - El driver del volante es el más pequeño del tablero: confirmar que sea el DM860H.
 
 ---
 

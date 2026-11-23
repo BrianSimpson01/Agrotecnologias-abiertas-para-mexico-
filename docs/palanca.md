@@ -3,7 +3,7 @@
 La palanca se acciona con un **mecanismo articulado** que respeta el recorrido de la transmisión original del tractor. Ya está construida e integrada al sistema.
 
 - **Controlador:** Raspberry Pi Pico #2
-- **Driver:** dedicado, alimentado a 24 V desde el [tablero](tablero.md)
+- **Driver:** dedicado, el más pequeño del tablero, alimentado a 24 V desde el [tablero](tablero.md)
 - **Retroalimentación:** línea DATA del mecanismo a su Pico
 
 ---
@@ -38,12 +38,12 @@ Las velocidades del tractor se cronometraron en un tramo de 50 m:
 | Componente | Modelo | Notas |
 |---|---|---|
 | Microcontrolador | Raspberry Pi Pico | |
-| Driver | *Por completar* | 24 V |
+| Driver | *Por completar* (el más pequeño del tablero) | 24 V |
 | Actuador | *Por completar* | |
 | Mecanismo | Articulado, impreso en 3D | |
 
 !!! note "Por completar"
-    El reporte todavía no trae los cálculos ni los resultados de la palanca: posiciones (velocidades) que acciona, fuerza requerida, recorrido, actuador y driver.
+    El reporte todavía no trae los cálculos ni los resultados de la palanca: posiciones (velocidades) que acciona, fuerza requerida, recorrido, actuador y modelo del driver.
 
 ---
 

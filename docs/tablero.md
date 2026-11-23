@@ -27,7 +27,7 @@ flowchart LR
 La separación en canales **aísla fallas**: si un canal se detiene, los otros dos conservan su control.
 
 !!! tip "Regla fácil"
-    **Un mecanismo, una Pico, su propio driver.** Si falla el volante, revisa solo su Pico y su driver. El driver más pequeño es siempre el del volante.
+    **Un mecanismo, una Pico, su propio driver.** Si falla el volante, revisa solo su Pico y su driver. El driver más pequeño es siempre el de la palanca; el volante y los pistones usan el mismo modelo (DM860H).
 
 ---
 
@@ -41,9 +41,9 @@ La separación en canales **aísla fallas**: si un canal se detiene, los otros d
 | Control | Raspberry Pi Pico — volante | Controla el driver del volante | Lógica 3.3 V |
 | Control | Raspberry Pi Pico — palanca | Controla el driver de la palanca | Lógica 3.3 V |
 | Control | Raspberry Pi Pico — pistones | Controla los tres drivers de los pistones | Lógica 3.3 V |
-| Potencia de salida | Driver del volante (el más pequeño) | Entrega corriente al motor del volante | 24 V |
-| Potencia de salida | Driver de la palanca | Entrega corriente al mecanismo de la palanca | 24 V |
-| Potencia de salida | Drivers de pistones (3, uno por pistón) | Entregan corriente a cada pistón | 24 V |
+| Potencia de salida | Driver del volante (DM860H) | Entrega corriente al motor del volante | 24 V |
+| Potencia de salida | Driver de la palanca (el más pequeño) | Entrega corriente al mecanismo de la palanca | 24 V |
+| Potencia de salida | Drivers de pistones (3 × DM860H, uno por pistón) | Entregan corriente a cada pistón | 24 V |
 | Comunicación | Antenas (encima de la caja) | Reciben señal externa | Tipo y conexión por confirmar |
 
 ---
@@ -85,7 +85,7 @@ El sistema mueve mandos de un vehículo pesado, así que debe poder detenerse de
 - Separación física de cables de potencia y de señal dentro del gabinete.
 
 !!! warning "Por confirmar"
-    Modelos del convertidor y de los drivers, corrientes nominales, fusible en la entrada de 12 V, qué carga usa la salida de 3.3 V y cuál la de 5 V, protocolo de las líneas DATA, calibre del cableado de 24 V, tipo de antenas y ubicación del paro de emergencia.
+    Modelo del convertidor y del driver de la palanca, corrientes nominales, fusible en la entrada de 12 V, qué carga usa la salida de 3.3 V y cuál la de 5 V, protocolo de las líneas DATA, calibre del cableado de 24 V, tipo de antenas y ubicación del paro de emergencia.
 
 ---
 
