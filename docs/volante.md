@@ -18,7 +18,7 @@ El torque para girar el volante se obtuvo de una **medición real con dinamómet
 | Radio del volante | 36.5 cm ÷ 2 | 0.1825 m |
 | Torque en el volante | T = F · r = 19.62 × 0.1825 | **3.58 N·m** |
 | Torque que debe dar el motor (reducción 3:1) | 3.58 ÷ 3 | 1.19 N·m |
-| Margen | 9 N·m ÷ 3.58 N·m | **2.51** |
+| Margen | (3 N·m × 3) ÷ 3.58 N·m = 9 ÷ 3.58 | **2.51** |
 
 - **Reducción 3:1:** el engrane del motor tiene 20 dientes y el del volante 60. El motor da 3 vueltas por cada vuelta del volante y el torque se multiplica por 3.
 - **Recorrido:** el volante gira 450° de tope a tope (una vuelta y cuarto); el motor gira 1350°.
@@ -112,7 +112,6 @@ Cumple el requisito de no invasivo y se adapta a otro tractor sin reprogramar el
 !!! warning "Pendientes"
     - Qué hace la Pico si deja de recibir comandos de ROS 2 (¿tiempo límite que detenga el motor?).
     - Si el firmware corrige con la lectura del encoder cuando el motor pierde pasos, o solo lo reporta.
-    - El reporte usa 3 N·m para este motor y 2.80 N·m en los pedales: unificar el valor.
 
 ---
 
