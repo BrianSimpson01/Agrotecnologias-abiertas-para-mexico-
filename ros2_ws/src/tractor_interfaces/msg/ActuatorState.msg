@@ -1,0 +1,3 @@
+float32 current_pos
+bool limit_switch_hit
+bool hardware_error

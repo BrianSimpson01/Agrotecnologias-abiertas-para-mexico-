@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kubota_b2401">
+
+  <!-- PROPIEDADES CINEMÁTICAS Y GEOMÉTRICAS REALES -->
+  <xacro:property name="wheelbase" value="1.56"/>
+  <xacro:property name="rear_track" value="0.85"/>
+  <xacro:property name="front_track" value="0.73"/>
+  <xacro:property name="r_rear" value="0.38"/>
+  <xacro:property name="r_front" value="0.252"/>
+  <xacro:property name="w_rear" value="0.22"/>
+  <xacro:property name="w_front" value="0.16"/>
+
+  <!-- MATERIALES -->
+  <material name="kubota_orange"><color rgba="0.95 0.3 0.05 1.0"/></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0"/></material>
+  <material name="black"><color rgba="0.08 0.08 0.08 1.0"/></material>
+  <material name="counterweight_grey"><color rgba="0.35 0.37 0.4 1.0"/></material>
+
+  <!-- BASE FOOTPRINT -->
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 ${r_rear}" rpy="0 0 0"/>
+  </joint>
+
+  <!-- BASE LINK -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="${wheelbase*0.4} 0 0.2" rpy="0 0 0"/>
+      <mass value="900.0"/>
+      <inertia ixx="150.0" ixy="0.0" ixz="0.0" iyy="350.0" iyz="0.0" izz="400.0"/>
+    </inertial>
+
+    <!-- Chasis Principal -->
+    <visual>
+      <origin xyz="${wheelbase/2} 0 0.1" rpy="0 0 0"/>
+      <geometry><box size="2.1 0.7 0.45"/></geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="${wheelbase/2} 0 0.1" rpy="0 0 0"/>
+      <geometry><box size="2.1 0.7 0.45"/></geometry>
+    </collision>
+
+    <!-- Capó -->
+    <visual>
+      <origin xyz="${wheelbase - 0.15} 0 0.3"/>
+      <geometry><box size="0.95 0.9 0.6"/></geometry>
+      <material name="kubota_orange"/>
+    </visual>
+
+    <!-- Contrapeso Frontal -->
+    <visual>
+      <origin xyz="${wheelbase + 0.45} 0 0.05"/>
+      <geometry><box size="0.35 0.4 0.35"/></geometry>
+      <material name="counterweight_grey"/>
+    </visual>
+
+    <!-- Guardabarros -->
+    <visual>
+      <origin xyz="0 ${rear_track/2} 0.22"/>
+      <geometry><box size="0.75 0.22 0.15"/></geometry>
+      <material name="kubota_orange"/>
+    </visual>
+    <visual>
+      <origin xyz="0 -${rear_track/2} 0.22"/>
+      <geometry><box size="0.75 0.22 0.15"/></geometry>
+      <material name="kubota_orange"/>
+    </visual>
+
+    <!-- ROPS y Techo -->
+    <visual>
+      <origin xyz="-0.15 0 0.75"/>
+      <geometry><box size="0.08 0.75 1.3"/></geometry>
+      <material name="black"/>
+    </visual>
+    <visual>
+      <origin xyz="0.2 0 1.50"/>
+      <geometry><box size="1.45 1.0 0.08"/></geometry>
+      <material name="kubota_orange"/>
+    </visual>
+    <collision>
+      <origin xyz="0.2 0 1.50"/>
+      <geometry><box size="1.45 1.0 0.08"/></geometry>
+    </collision>
+  </link>
+
+  <!-- RUEDAS TRASERAS -->
+  <xacro:macro name="rear_wheel" params="prefix y_reflect">
+    <link name="${prefix}_rear_wheel">
+      <inertial>
+        <mass value="45.0"/>
+        <inertia ixx="0.8" ixy="0.0" ixz="0.0" iyy="1.4" iyz="0.0" izz="0.8"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry><cylinder radius="${r_rear}" length="${w_rear}"/></geometry>
+        <material name="black"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry><cylinder radius="${r_rear}" length="${w_rear}"/></geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}_rear_wheel_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${prefix}_rear_wheel"/>
+      <origin xyz="0 ${y_reflect * rear_track / 2} 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:rear_wheel prefix="left" y_reflect="1"/>
+  <xacro:rear_wheel prefix="right" y_reflect="-1"/>
+
+  <!-- RUEDAS DELANTERAS Y DIRECCIÓN -->
+  <xacro:macro name="front_wheel" params="prefix y_reflect">
+    <link name="${prefix}_steering_kingpin">
+      <inertial>
+        <mass value="5.0"/>
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_steering_joint" type="revolute">
+      <parent link="base_link"/>
+      <child link="${prefix}_steering_kingpin"/>
+      <origin xyz="${wheelbase} ${y_reflect * front_track / 2} ${r_front - r_rear}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-0.733" upper="0.733" effort="500" velocity="1.0"/>
+    </joint>
+
+    <link name="${prefix}_front_wheel">
+      <inertial>
+        <mass value="15.0"/>
+        <inertia ixx="0.15" ixy="0.0" ixz="0.0" iyy="0.25" iyz="0.0" izz="0.15"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry><cylinder radius="${r_front}" length="${w_front}"/></geometry>
+        <material name="black"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry><cylinder radius="${r_front}" length="${w_front}"/></geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}_front_wheel_joint" type="continuous">
+      <parent link="${prefix}_steering_kingpin"/>
+      <child link="${prefix}_front_wheel"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:front_wheel prefix="left" y_reflect="1"/>
+  <xacro:front_wheel prefix="right" y_reflect="-1"/>
+
+  <!-- PLUGIN ACKERMANN PARA GAZEBO HARMONIC -->
+  <!-- PLUGIN ACKERMANN PARA GAZEBO HARMONIC -->
+  <gazebo>
+    <plugin filename="gz-sim-ackermann-steering-system" name="gz::sim::systems::AckermannSteering">
+      <left_joint>left_rear_wheel_joint</left_joint>
+      <right_joint>right_rear_wheel_joint</right_joint>
+      <left_steering_joint>left_steering_joint</left_steering_joint>
+      <right_steering_joint>right_steering_joint</right_steering_joint>
+      <kingpin_width>${front_track}</kingpin_width>
+      <wheel_base>${wheelbase}</wheel_base>
+      <wheel_separation>${rear_track}</wheel_separation>
+      <wheel_radius>${r_rear}</wheel_radius>
+      
+      <!-- Configuración de Tópicos y Cinemática -->
+      <topic>/cmd_vel</topic>
+      <odom_topic>/odom</odom_topic>
+      <tf_topic>/tf</tf_topic>
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+      
+      <!-- Límites físicos reales del Kubota -->
+      <steer_limit>0.733</steer_limit> <!-- Max steering ±42 deg (0.733 rad) -->
+    </plugin>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,3 @@
+float32 target_pos
+float32 velocity
+float32 acceleration

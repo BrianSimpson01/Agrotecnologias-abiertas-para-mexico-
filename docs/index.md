@@ -60,6 +60,7 @@ flowchart LR
 | Volante | Pico #1 + ATtiny412 | NEMA 23, reducción 3:1, encoder AS5600 | [Volante](volante.md) |
 | Palanca | Pico #2 | Mecanismo articulado | [Palanca](palanca.md) |
 | Pistones | Pico #3 | 3 husillos sobre los pedales | [Pistones](pistones.md) |
+| Software | ROS 2 + Gazebo | Modelo URDF y nodo `goto_point.py` | [Software](software.md) |
 
 ---
 
@@ -78,11 +79,11 @@ Lo que queda es la prueba, no construcción. Ver [Uso](uso.md#pruebas-de-campo).
 
 ## Equipo
 
-- Ángel Iván Domínguez Cruz
-- Apolinar Velázquez Fernández
-- Brian Carl Simpson y Reyes
-- Danna Paola García Sánchez
-- Emmanuel del Villar Soto
 - Héctor Cornejo Morales
-- Héctor Ojeda Serafio
+- Ángel Iván Domínguez Cruz
+- Danna Paola García Sánchez
 - Pablo Eduardo Manzano López
+- Héctor Ojeda Serafio
+- Brian Carl Simpson y Reyes
+- Apolinar Velázquez Fernández
+- Emmanuel del Villar Soto

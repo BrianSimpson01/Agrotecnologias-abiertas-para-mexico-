@@ -1,0 +1,9 @@
+
+# Carpetas generadas por ROS 2
+/build/
+/install/
+/log/
+
+# Archivos generados por Python
+__pycache__/
+*.pyc

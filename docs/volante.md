@@ -102,11 +102,10 @@ Cumple el requisito de no invasivo y se adapta a otro tractor sin reprogramar el
 ## Tres capas de protección
 
 1. **Muros virtuales:** límites por software al 50 % del recorrido medido en el homing, menos un margen para que el motor alcance a frenar.
-2. **Límite duro:** la orden se satura a ±0.73 rad (≈ 42°).
+2. **Límite duro:** la orden se satura a ±0.733 rad (≈ 42°), que es el ángulo máximo de las **ruedas** delanteras (`steer_limit` en el [modelo URDF](software.md#modelo-del-tractor-urdf)), no el giro del volante.
 3. **Bandera `hardware_error`:** indicador en la telemetría que se activa si se corta el enlace UART o el bus I2C deja de responder.
 
 !!! warning "Pendientes"
-    - El volante gira 450°, así que 42° no puede ser el giro completo del volante: confirmar si es el ángulo de las ruedas o del comando.
     - Qué hace la Pico si deja de recibir comandos de ROS 2 (¿tiempo límite que detenga el motor?).
     - Si el firmware corrige con la lectura del encoder cuando el motor pierde pasos, o solo lo reporta.
     - El reporte usa 3 N·m para este motor y 2.80 N·m en los pedales: unificar el valor.

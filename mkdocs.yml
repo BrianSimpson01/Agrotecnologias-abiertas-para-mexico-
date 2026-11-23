@@ -8,6 +8,7 @@ nav:
   - Volante: volante.md
   - Palanca: palanca.md
   - Pistones: pistones.md
+  - Software: software.md
   - Uso: uso.md
 
 markdown_extensions:
