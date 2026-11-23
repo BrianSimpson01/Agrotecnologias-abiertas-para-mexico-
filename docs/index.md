@@ -78,5 +78,11 @@ Lo que queda es la prueba, no construcción. Ver [Uso](uso.md#pruebas-de-campo).
 
 ## Equipo
 
-- Brian
-- *Por completar*
+- Brian Carl Simpson y Reyes
+- Héctor Ojeda Serafio
+- Héctor Cornejo Morales
+- Ángel Iván Domínguez Cruz
+- Danna Paola García Sánchez
+- Emmanuel del Villar Soto
+- Pablo Eduardo Manzano López
+- Apolinar Velázquez Fernández
