@@ -21,10 +21,10 @@ Un torque pequeño produce un empuje grande, a cambio de avanzar despacio. La fu
 
 | Símbolo | Significado | Valor |
 |---|---|---|
-| τ | Torque del motor | 2.80 N·m |
+| τ | Torque del motor (NEMA 23) | 3 N·m |
 | p | Paso: avance de la tuerca por vuelta | 4 mm |
 | η | Eficiencia | 0.9 |
-| **F** | **Empuje disponible** | **3,958.4 N (≈ 403.6 kgf)** |
+| **F** | **Empuje disponible** | **4,241.2 N (≈ 432.3 kgf)** |
 
 Entre más fino el paso, más fuerza y menos velocidad.
 
@@ -34,14 +34,14 @@ Entre más fino el paso, más fuerza y menos velocidad.
 
 | Pedal | Fuerza requerida | Factor de seguridad |
 |---|---|---|
-| Freno | 600 N | 6.60 |
-| Embrague | 600 N | 6.60 |
-| Acelerador | 120 N | 32.99 |
+| Freno | 600 N | 7.07 |
+| Embrague | 600 N | 7.07 |
+| Acelerador | 120 N | 35.34 |
 
 Factor de seguridad = fuerza disponible ÷ fuerza requerida.
 
 !!! warning "Estimado, no medido"
-    Los 600 N son una estimación basada en pruebas de operación de maquinaria agrícola, no una medición propia (a diferencia del volante). El acelerador se tomó como el 20 % de ese valor. Con un factor de 6.6, el diseño aguanta aunque la fuerza real sea varias veces mayor.
+    Los 600 N son una estimación basada en pruebas de operación de maquinaria agrícola, no una medición propia (a diferencia del volante). El acelerador se tomó como el 20 % de ese valor. Con un factor de 7.07, el diseño aguanta aunque la fuerza real sea varias veces mayor.
 
 ---
 
@@ -49,7 +49,7 @@ Factor de seguridad = fuerza disponible ÷ fuerza requerida.
 
 | Componente | Modelo | Función |
 |---|---|---|
-| Motor (x3) | NEMA 23 (cara de 57 mm), a pasos | Gira en incrementos fijos: contar pulsos es contar ángulo |
+| Motor (x3) | NEMA 23 (cara de 57 mm), a pasos, 3 N·m | Gira en incrementos fijos: contar pulsos es contar ángulo |
 | Husillo (x3) | Paso 4 mm, η = 0.9 | Convierte el giro del motor en empuje lineal sobre el pedal |
 | Driver (x3) | DM860H | Amplificador entre el micro y el motor. Señales: Step, Direction, Enable |
 | Encoder (x3) | AS5600 (efecto Hall, 12 bits) | Mide la orientación de un imán pegado al eje: 0–4095 por vuelta, 0.088° por cuenta |
@@ -69,8 +69,7 @@ flowchart LR
 ```
 
 !!! note "Por confirmar"
-    - El reporte no escribe p = 4 mm ni η = 0.9; son los valores que dan 3,958.4 N. Confirmarlos.
-    - El mismo motor aparece con 2.80 N·m aquí y con 3 N·m en el volante. Unificar el valor.
+    - El reporte no escribe p = 4 mm ni η = 0.9; son los valores que dan 4,241.2 N. Confirmarlos.
     - Posición segura ante falla: freno aplicado y acelerador en reposo.
 
 ---

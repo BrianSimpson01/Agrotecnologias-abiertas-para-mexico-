@@ -65,7 +65,7 @@ Un sistema **modular**: cada subsistema se desarrolla, prueba y cambia sin tocar
 
     ---
 
-    Tres husillos sobre freno, embrague y acelerador, con 3,958 N de empuje.
+    Tres husillos sobre freno, embrague y acelerador, con 4,241 N de empuje.
 
     [:octicons-arrow-right-24: Pistones](pistones.md)
 
