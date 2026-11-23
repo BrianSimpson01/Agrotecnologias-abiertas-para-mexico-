@@ -113,6 +113,26 @@ Cumple el requisito de no invasivo y se adapta a otro tractor sin reprogramar el
 
 ---
 
+## Piezas CAD
+
+Archivos de SolidWorks del subsistema de dirección (piezas `.SLDPRT` y ensamble `.SLDASM`).
+
+[:material-download: Descargar piezas del volante (.zip, 1.8 MB)](recursos/cad/Piezas_Volante.zip){ .md-button .md-button--primary }
+
+| Archivo | Tipo | Descripción |
+|---|---|---|
+| `Volante.SLDASM` | Ensamble | Ensamble completo del subsistema |
+| `Abrazaera.SLDPRT` | Pieza | Abrazadera de montaje al volante |
+| `caja_motor_direccion.SLDPRT` | Pieza | Caja del motor de dirección |
+| `driving_wheel_120mm.SLDPRT` | Pieza | Engrane del volante (120 mm) |
+| `motor_gear_40mm.SLDPRT` | Pieza | Engrane del motor (40 mm) |
+| `nema 27.SLDPRT` | Pieza | Modelo del motor a pasos |
+
+!!! tip "Cómo abrirlos"
+    Descomprime el `.zip` y abre `Volante.SLDASM` en SolidWorks, con todas las piezas en la misma carpeta.
+
+---
+
 ## Código
 
 ```cpp
