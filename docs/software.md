@@ -102,7 +102,7 @@ bool limit_switch_hit
 bool hardware_error
 ```
 
-`hardware_error` es la misma bandera que reporta el [volante](volante.md#tres-capas-de-proteccion) cuando se pierde el enlace UART o el bus I2C.
+`hardware_error` es la misma bandera que reporta el [volante](volante.md#protecciones) cuando se pierde el enlace UART o el bus I2C.
 
 ---
 

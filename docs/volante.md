@@ -71,12 +71,18 @@ A 0.83 m/s el tractor avanza 8.3 cm entre un mensaje y el siguiente, una resoluc
 
 ### De radianes a pasos
 
+El DM860H está configurado a **800 pasos por vuelta del motor**. Con la reducción 3:1, una vuelta del volante son 2,400 pasos.
+
 ```text
-pasos = (ángulo ÷ 2π) × pasos_por_vuelta_del_motor × 3
+pasos = (ángulo ÷ 2π) × 800 × 3  ≈  382 pasos por radián
 ```
 
-!!! note "Por confirmar"
-    Pasos por vuelta configurados en el driver: **[valor]**.
+| Dato | Valor |
+|---|---|
+| Pasos por vuelta del motor (driver) | 800 |
+| Pasos por vuelta del volante | 2,400 |
+| Resolución en el volante | 0.15° por paso |
+| Recorrido total del volante (450°) | 3,000 pasos |
 
 ---
 
@@ -103,14 +109,16 @@ Cumple el requisito de no invasivo y se adapta a otro tractor sin reprogramar el
 
 ---
 
-## Tres capas de protección
+## Protecciones
 
 1. **Muros virtuales:** límites por software al 50 % del recorrido medido en el homing, menos un margen para que el motor alcance a frenar.
 2. **Límite duro:** la orden se satura a ±0.733 rad (≈ 42°), que es el ángulo máximo de las **ruedas** delanteras (`steer_limit` en el [modelo URDF](software.md#modelo-del-tractor-urdf)), no el giro del volante.
 3. **Bandera `hardware_error`:** indicador en la telemetría que se activa si se corta el enlace UART o el bus I2C deja de responder.
+4. **Pérdida de comunicación con la Jetson:**
+    - **Antes del homing:** la Pico no arranca. No aparece en el monitor serial el mensaje de conexión exitosa y no se puede mandar ninguna orden.
+    - **Durante la operación:** la Pico detiene el motor y reporta un error.
 
 !!! warning "Pendientes"
-    - Qué hace la Pico si deja de recibir comandos de ROS 2 (¿tiempo límite que detenga el motor?).
     - Si el firmware corrige con la lectura del encoder cuando el motor pierde pasos, o solo lo reporta.
 
 ---
