@@ -36,7 +36,7 @@ Un sistema **modular**: cada subsistema (dirección, pedales, palanca, percepci�
 
 | Bloque | Papel | Qué hace |
 |---|---|---|
-| **GNSS-RTK** | Sentidos (posición) | Posicionamiento satelital con corrección desde una estación base; error de centímetros en buenas condiciones. |
+| **GNSS-RTK** | Sentidos (posición) | Una estación base fija manda correcciones por radio al tractor; ahí, dos antenas GNSS y un módulo UM982 calculan la posición con error de centímetros. Ver [Tablero](tablero.md#posicionamiento-gnss-rtk). |
 | **LiDAR** | Sentidos (entorno) | Mide distancias a obstáculos con pulsos de luz. |
 | **ROS 2 en Jetson Nano** | Cerebro | La Jetson Nano corre ROS 2: planea la trayectoria y manda órdenes por tópicos. |
 | **Microcontroladores** | Nervios | Tres Raspberry Pi Pico (con micro-ROS), conectadas a la Jetson, traducen cada orden en pulsos para los motores. |

@@ -59,7 +59,8 @@ Al revés que el encendido.
 | Un mecanismo se mueve solo o no se detiene | Apaga todo con el paro de emergencia y aléjate de los mandos |
 | Olor a quemado, humo o un cable caliente | Corta la alimentación principal y no vuelvas a encender hasta revisar |
 | Un mecanismo no se mueve | Apaga y revisa que sus cables de potencia y de información estén bien conectados |
-| El tractor no sigue el camino | Detén el programa y revisa que las antenas y su cable estén bien conectados |
+| El tractor no sigue el camino | Detén el programa y revisa las antenas, el USB del UM982 y el USB del radio en la Jetson |
+| La posición brinca o tiene error de metros | No están llegando las correcciones: revisa el radio del rover y que la estación base esté encendida y transmitiendo |
 | `hardware_error` activo en la telemetría | Se cortó el enlace UART o el I2C del encoder del volante: revisa ese cableado |
 
 ---

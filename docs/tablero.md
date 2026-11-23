@@ -1,6 +1,6 @@
 # Tablero de control
 
-El tablero es el **gabinete que concentra la electrónica del kit** (no es el tablero de instrumentos del tractor). Se alimenta de la batería de 12 V del motor del tractor, eleva esa tensión a 24 V y entrega tres salidas reguladas (3.3 V, 5 V y 24 V) a tres Raspberry Pi Pico y a sus drivers. Las tres Pico se conectan a una **Jetson Nano**, que corre ROS 2. Las **antenas van montadas encima** de la caja.
+El tablero es el **gabinete que concentra la electrónica del kit** (no es el tablero de instrumentos del tractor). Se alimenta de la batería de 12 V del motor del tractor, eleva esa tensión a 24 V y entrega tres salidas reguladas (3.3 V, 5 V y 24 V) a tres Raspberry Pi Pico y a sus drivers. Las tres Pico se conectan a una **Jetson Nano**, que corre ROS 2. Encima de la caja van las **dos antenas GNSS** del módulo **UM982** (ver [Posicionamiento GNSS-RTK](#posicionamiento-gnss-rtk)).
 
 El gabinete es una estructura de perfil de aluminio con placa de montaje perforada. Contiene la etapa de potencia, tres microcontroladores y cinco drivers de motor.
 
@@ -18,7 +18,9 @@ flowchart LR
     BOOST --> V33[Salida 3.3 V]
     V5 & V33 --> PICOS[3 Raspberry Pi Pico]
     JET[Jetson Nano<br/>ROS 2] <--> PICOS
-    ANT[Antenas] --> JET
+    ANT[2 antenas GNSS] --> GNSS[Módulo UM982<br/>GNSS-RTK]
+    GNSS -->|USB → USB-C| JET
+    RAD[Radio del rover] -->|USB| JET
     V24 --> DRV[5 drivers]
     PICOS -->|señal de control| DRV
     DRV -->|potencia 24 V| MEC[Volante · Freno · Embrague<br/>Palanca · Acelerador]
@@ -29,6 +31,34 @@ La separación en canales **aísla fallas**: si un canal se detiene, los otros d
 
 !!! tip "Regla fácil"
     **Cada mecanismo tiene su propio driver, y cada Pico solo maneja los suyos.** Si falla el volante, revisa solo la Pico 1 y su driver; si fallan freno o embrague, la Pico 2; si fallan palanca o acelerador, la Pico 3. El driver más pequeño es siempre el de la palanca; el volante y los pistones usan el mismo modelo (DM860H).
+
+---
+
+## Posicionamiento GNSS-RTK
+
+El tractor sabe dónde está con un sistema **GNSS-RTK** de dos partes: una **estación base** fija y el **rover** (el tractor).
+
+- **Estación base:** está fija en lo alto de un edificio. Como conoce su posición exacta, calcula las correcciones y las transmite por **radiofrecuencia**.
+- **Rover (el tractor):** las dos antenas GNSS van conectadas al módulo **UM982**, que calcula la posición. Un **módulo de radio** recibe las correcciones de la base. Los dos se conectan por **USB a la Jetson Nano**: el UM982 por su USB-C y el radio por USB directo.
+- **Resultado:** con las correcciones, el error de la posición baja de metros a centímetros. Con dos antenas, el UM982 también puede calcular hacia dónde apunta el tractor (rumbo).
+
+```mermaid
+flowchart LR
+    subgraph BASE[Estación base · azotea]
+        BGNSS[Receptor GNSS base] --> BRAD[Radio base]
+    end
+    subgraph ROVER[Rover · tractor]
+        A1[Antena GNSS 1] --> UM[UM982]
+        A2[Antena GNSS 2] --> UM
+        RRAD[Radio del rover]
+        UM -->|USB → USB-C| JET[Jetson Nano<br/>ROS 2]
+        RRAD -->|USB| JET
+    end
+    BRAD -. correcciones RTK por RF .-> RRAD
+```
+
+!!! note "Por confirmar"
+    Modelo del receptor de la estación base, modelo de los radios, frecuencia de transmisión y cómo llegan las correcciones al UM982 (a través de la Jetson).
 
 ---
 
@@ -47,7 +77,9 @@ La separación en canales **aísla fallas**: si un canal se detiene, los otros d
 | Potencia de salida | Driver del volante (DM860H) | Entrega corriente al motor del volante | 24 V |
 | Potencia de salida | Driver de la palanca (el más pequeño) | Entrega corriente al mecanismo de la palanca | 24 V |
 | Potencia de salida | Drivers de pistones (3 × DM860H, uno por pistón) | Entregan corriente a cada pistón | 24 V |
-| Comunicación | Antenas (encima de la caja) | Reciben señal externa | Tipo y conexión por confirmar |
+| Posicionamiento | 2 antenas GNSS UM980 (encima de la caja) | Reciben la señal de los satélites | Cable a las entradas de antena del UM982 |
+| Posicionamiento | Módulo GNSS-RTK UM982 (rover) | Calcula la posición del tractor con las dos antenas y las correcciones RTK | USB (Jetson) → USB-C (UM982) |
+| Comunicación | Módulo de radio del rover | Recibe por radiofrecuencia las correcciones de la estación base | USB directo a la Jetson Nano |
 
 ---
 
@@ -133,7 +165,7 @@ El sistema mueve mandos de un vehículo pesado, así que debe poder detenerse de
 - Separación física de cables de potencia y de señal dentro del gabinete.
 
 !!! warning "Por confirmar"
-    Modelo del convertidor y del driver de la palanca, alimentación de la Jetson Nano y si va dentro del gabinete, corrientes nominales, fusible en la entrada de 12 V, qué carga usa la salida de 3.3 V y cuál la de 5 V, protocolo de las líneas DATA, calibre del cableado de 24 V, tipo de antenas y ubicación del paro de emergencia.
+    Modelo del convertidor y del driver de la palanca, alimentación de la Jetson Nano y si va dentro del gabinete, corrientes nominales, fusible en la entrada de 12 V, qué carga usa la salida de 3.3 V y cuál la de 5 V, protocolo de las líneas DATA, calibre del cableado de 24 V, modelo del radio y de la estación base, y ubicación del paro de emergencia.
 
 ---
 
