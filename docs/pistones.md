@@ -68,6 +68,34 @@ flowchart LR
 
 ---
 
+## PCB del pistón
+
+Cada pistón tiene su propia placa. El proyecto está hecho en **Altium Designer** (`PCB_Piston.PrjPcb`).
+
+[:material-download: Proyecto Altium completo (.zip, 10 MB)](recursos/pcb/PCB_Piston.zip){ .md-button .md-button--primary }
+[:material-download: Gerbers para fabricar (.zip)](recursos/pcb/PCB_Piston_Gerbers.zip){ .md-button }
+
+| Archivo | Qué es |
+|---|---|
+| `PCB_Piston.PrjPcb` | Proyecto de Altium |
+| `Sheet1.SchDoc` | Esquemático |
+| `PCB1.PcbDoc` | Diseño de la placa |
+| `PCB_PISTON_NEMA23.zip` | Gerbers (generados el 2 de septiembre de 2026) |
+
+| Capa Gerber | Extensión |
+|---|---|
+| Cobre superior / inferior | `.GTL` / `.GBL` |
+| Máscara de soldadura superior / inferior | `.GTS` / `.GBS` |
+| Pasta superior / inferior | `.GTP` / `.GBP` |
+| Serigrafía superior / inferior | `.GTO` / `.GBO` |
+| Contorno de la placa | `.GM` |
+| Mecánica 1 | `.GM1` |
+
+!!! tip "Para fabricarla"
+    Sube `PCB_Piston_Gerbers.zip` tal cual al fabricante (por ejemplo JLCPCB o PCBWay); detecta las capas por su extensión.
+
+---
+
 ## Conexiones
 
 | Pico (GPIO) | Conecta a | Señal |

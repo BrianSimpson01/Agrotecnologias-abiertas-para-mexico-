@@ -71,7 +71,7 @@ Las conexiones internas forman dos redes: la de **alimentación**, que reparte l
 
 ## Fabricación
 
-- **PCB:** sustituye el cableado suelto por pistas de cobre y hace el sistema repetible.
+- **PCB:** cada mecanismo tiene su propia placa, que sustituye el cableado suelto por pistas de cobre y hace el sistema repetible. Descargas: [PCB del pistón](pistones.md#pcb-del-piston).
 - **Ampacidad:** el calibre de cada cable se eligió según la corriente que lleva.
 - **Paro de emergencia por hardware:** un circuito físico que corta la potencia aunque el programa esté colgado.
 - **Pruebas realizadas:** continuidad, alimentación, sincronización electrónica y respuesta conjunta bajo condiciones operativas simuladas.
