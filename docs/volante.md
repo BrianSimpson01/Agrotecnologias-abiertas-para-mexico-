@@ -117,9 +117,7 @@ Cumple el requisito de no invasivo y se adapta a otro tractor sin reprogramar el
 4. **Pérdida de comunicación con la Jetson:**
     - **Antes del homing:** la Pico no arranca. No aparece en el monitor serial el mensaje de conexión exitosa y no se puede mandar ninguna orden.
     - **Durante la operación:** la Pico detiene el motor y reporta un error.
-
-!!! warning "Pendientes"
-    - Si el firmware corrige con la lectura del encoder cuando el motor pierde pasos, o solo lo reporta.
+5. **Corrección de pasos perdidos:** el encoder AS5600 mide la posición real del eje. Si el motor pierde pasos, el firmware detecta la diferencia y la corrige, así el volante siempre llega al ángulo pedido.
 
 ---
 

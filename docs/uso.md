@@ -39,7 +39,7 @@ Enciende primero lo que piensa y al final lo que mueve.
 
 - ROS 2 recibe la posición del GNSS-RTK y los obstáculos del LiDAR.
 - `goto_point.py` ([ver Software](software.md)) lleva el tractor hacia cada punto con **control proporcional** y se da por llegado a menos de 0.25 m.
-- Las órdenes se saturan a 0.7 rad/s de velocidad angular y a una velocidad lineal máxima (0.83 m/s medidos; el código usa 1.2 m/s, por unificar).
+- Las órdenes se saturan a 0.7 rad/s de velocidad angular y 1.2 m/s de velocidad lineal; el tractor alcanza como máximo 0.83 m/s.
 - El modelo usa la geometría del tractor: distancia entre ejes 1.56 m; ancho de vía 0.85 m atrás y 0.73 m adelante.
 
 ## Apagado

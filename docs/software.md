@@ -79,8 +79,8 @@ flowchart LR
 - **Freno en curvas:** la velocidad lineal se multiplica por `max(0.2, cos(error de rumbo))`, así el tractor desacelera en giros cerrados.
 - **Saturación:** las órdenes se recortan a los límites del tractor.
 
-!!! warning "Por unificar"
-    El código limita la velocidad lineal a **1.2 m/s**, pero la velocidad máxima medida del tractor es **0.83 m/s** (3 km/h). Ajustar `max_linear_speed` al valor medido.
+!!! note "Velocidad máxima"
+    El código permite hasta **1.2 m/s**, pero en la práctica el tractor llega como máximo a **0.83 m/s** (3 km/h, medido con el acelerador al máximo). El límite del código queda por encima de lo que el tractor puede alcanzar.
 
 ---
 
